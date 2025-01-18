@@ -9,27 +9,27 @@ from src.hybrid_recommendations import HybridRecommenderSystem as hrs
 
 # load the data
 cleaned_data_path = "data/cleaned_data.csv"
-songs_data = pd.read_csv(cleaned_data_path)
+st.session_state.songs_data = pd.read_csv(cleaned_data_path)
 
 # load the transformed data
 transformed_data_path = "data/transformed_data.npz"
-transformed_data = load_npz(transformed_data_path)
+st.session_state.transformed_data = load_npz(transformed_data_path)
 
 # load the track ids
 track_ids_path = "data/track_ids.npy"
-track_ids = load(track_ids_path,allow_pickle=True)
+st.session_state.track_ids = load(track_ids_path,allow_pickle=True)
 
 # load the filtered songs data
 filtered_data_path = "data/collab_filtered_data.csv"
-filtered_data = pd.read_csv(filtered_data_path)
+st.session_state.filtered_data = pd.read_csv(filtered_data_path)
 
 # load the interaction matrix
 interaction_matrix_path = "data/interaction_matrix.npz"
-interaction_matrix = load_npz(interaction_matrix_path)
+st.session_state.interaction_matrix = load_npz(interaction_matrix_path)
 
 # load the transformed hybrid data
 transformed_hybrid_data_path = "data/transformed_hybrid_data.npz"
-transformed_hybrid_data = load_npz(transformed_hybrid_data_path)
+st.session_state.transformed_hybrid_data = load_npz(transformed_hybrid_data_path)
 
 # Title
 st.title('Welcome to the Spotify Song Recommender!')
@@ -60,14 +60,13 @@ filtering_type = st.selectbox(label= 'Select the type of filtering:',
 # Button
 if filtering_type == 'Content-Based Filtering':
     if st.button('Get Recommendations'):
-        if ((songs_data["name"] == song_name) & (songs_data['artist'] == artist_name)).any():
+        if ((st.session_state.songs_data["name"] == song_name) & (st.session_state.songs_data['artist'] == artist_name)).any():
             st.write('Recommendations for', f"**{song_name}** by **{artist_name}**")
             recommendations = content_recommendation(song_name=song_name,
                                                      artist_name=artist_name,
-                                                     songs_data=songs_data,
-                                                     transformed_data=transformed_data,
-                                                     k=k)
-            
+                                                     songs_data=st.session_state.songs_data,
+                                                     transformed_data=st.session_state.transformed_data,
+                                                     k=k)            
             # Display Recommendations
             for ind , recommendation in recommendations.iterrows():
                 song_name = recommendation['name'].title()
@@ -92,14 +91,15 @@ if filtering_type == 'Content-Based Filtering':
             
 elif filtering_type == 'Collaborative Filtering':
     if st.button('Get Recommendations'):
-        if ((filtered_data["name"] == song_name) & (filtered_data["artist"] == artist_name)).any():
+        if ((st.session_state.filtered_data["name"] == song_name) & (st.session_state.filtered_data["artist"] == artist_name)).any():
             st.write('Recommendations for', f"**{song_name}** by **{artist_name}**")
             recommendations = collaborative_recommendation(song_name=song_name,
                                                            artist_name=artist_name,
-                                                           track_ids=track_ids,
-                                                           songs_data=filtered_data,
-                                                           interaction_matrix=interaction_matrix,
+                                                           track_ids=st.session_state.track_ids,
+                                                           songs_data=st.session_state.filtered_data,
+                                                           interaction_matrix=st.session_state.interaction_matrix,
                                                            k=k)
+
             
             # Display Recommendations
             for ind , recommendation in recommendations.iterrows():
