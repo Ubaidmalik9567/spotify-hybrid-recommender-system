@@ -6,7 +6,7 @@ This project implements a **weighted Hybrid Recommender System** to provide pers
 2. **Collaborative Filtering**
 3. **Hybrid Recommender System** (a weighted combination of the above two)
 
---
+---
 
 ## How to Build This Project
 
