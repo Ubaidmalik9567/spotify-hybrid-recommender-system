@@ -6,6 +6,10 @@ This project implements a **weighted Hybrid Recommender System** to provide pers
 2. **Collaborative Filtering**
 3. **Hybrid Recommender System** (a weighted combination of the above two)
 
+--
+
+## How to Build This Project
+
 The application is built using **Streamlit** for the frontend and integrates various recommendation algorithms to deliver an interactive user experience. It also utilizes **DVC** for data version control and **Dask** for efficient data processing.
 
 ---
