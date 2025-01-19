@@ -1,5 +1,5 @@
 import pandas as pd
-from src.data_cleaning import data_for_content_filtering
+from data_cleaning import data_for_content_filtering
 from src.content_based_filtering import transform_data, save_transformed_data
 
 # path of filtered data
