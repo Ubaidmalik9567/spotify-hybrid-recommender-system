@@ -1,4 +1,0 @@
-[core]
-    remote = ubaid
-['remote "ubaid"']
-    url = ../tmp
