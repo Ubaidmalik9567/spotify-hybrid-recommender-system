@@ -7,27 +7,27 @@ from numpy import load
 from src.hybrid_recommendations import HybridRecommenderSystem
 
 
-# load the data
+
 cleaned_data_path = "data/cleaned_data.csv"
 st.session_state.songs_data = pd.read_csv(cleaned_data_path)
 
-# load the transformed data
+
 transformed_data_path = "data/transformed_data.npz"
 st.session_state.transformed_data = load_npz(transformed_data_path)
 
-# load the track ids
+
 track_ids_path = "data/track_ids.npy"
 st.session_state.track_ids = load(track_ids_path,allow_pickle=True)
 
-# load the filtered songs data
+
 filtered_data_path = "data/collab_filtered_data.csv"
 st.session_state.filtered_data = pd.read_csv(filtered_data_path)
 
-# load the interaction matrix
+
 interaction_matrix_path = "data/interaction_matrix.npz"
 st.session_state.interaction_matrix = load_npz(interaction_matrix_path)
 
-# load the transformed hybrid data
+
 transformed_hybrid_data_path = "data/transformed_hybrid_data.npz"
 st.session_state.transformed_hybrid_data = load_npz(transformed_hybrid_data_path)
 
