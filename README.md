@@ -46,4 +46,4 @@ This is a rebuilt version and subset of The Million Song Dataset¹. It was built
 
 ## 🎥 See Spotify Song Recommender System in Action!  
 
-[Click here to watch the demo video]([https://drive.google.com/file/d/10VkhCRmWVSAXZaE_Kp-43CFxIxC0fI8X/view?usp=drive_link](https://drive.google.com/file/d/1TP7ue0xDZB3K1v31avum6EGVnuvEUa8d/view?usp=sharing))  
+[Click here to watch the demo video](https://drive.google.com/file/d/1TP7ue0xDZB3K1v31avum6EGVnuvEUa8d/view?usp=sharing)  
